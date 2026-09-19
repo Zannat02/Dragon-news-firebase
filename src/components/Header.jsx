@@ -4,11 +4,13 @@ import { format } from 'date-fns';
 
 const Header = () => {
     return (
-        <div className='flex flex-col justify-center items-center gap-3 mt-6'>
-           <img className='w-[400px]' src={logo} alt="" />
-           <p className='text-accent'>Journalism Without Fear or Favour</p>
+        <div className='flex flex-col justify-center items-center gap-3 mt-6 px-4'>
+           <img className='w-[200px] sm:w-[280px] md:w-[350px] lg:w-[400px] max-w-full h-auto' src={logo} alt="" />
+           <p className='text-accent text-sm md:text-base text-center'>Journalism Without Fear or Favour</p>
            
-           <p className=' font-semibold   text-accent'>{format(new Date(),"EEEE , MMMM 	MM , yyyy")}</p>
+           <p className='font-semibold text-accent text-xs sm:text-sm md:text-base text-center'>
+             {format(new Date(), "EEEE, MMMM d, yyyy")}
+           </p>
         </div>
     );
 };

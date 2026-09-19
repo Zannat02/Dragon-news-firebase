@@ -25,12 +25,11 @@ const Login = () => {
         const user = result.user;
         // console.log(user);
         
-        navigate(`${location.state ? location.state : "/"}`);
+       navigate(location.state?.from ? location.state.from : "/");
       })
       .catch((error) => {
         const errorCode = error.code;
-        // const errorMessage = error.message;
-        // alert(errorCode, errorMessage)
+       
         setError(errorCode);
       });
   }
@@ -40,22 +39,22 @@ const Login = () => {
 
 
   return (
-    <div className='flex justify-center min-h-screen items-center mt-5'>
+    <div className='flex justify-center min-h-screen items-center px-4 py-10'>
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl py-5">
-        <h2 className='font-semibold text-2xl text-center'>Login your account</h2>
-        <form onSubmit={handleLogin} className="card-body">
+        <h2 className='font-semibold text-xl md:text-2xl text-center px-4'>Login your account</h2>
+        <form onSubmit={handleLogin} className="card-body px-4 md:px-8">
           <fieldset className="fieldset">
             <label className="label">Email</label>
-            <input type="email" name='email' className="input" placeholder="Email" required />
+            <input type="email" name='email' className="input w-full" placeholder="Email" required />
             <label className="label">Password</label>
-            <input type="password" name='password' className="input" placeholder="Password"  required/>
-            <div><a className="link link-hover">Forgot password?</a></div>
+            <input type="password" name='password' className="input w-full" placeholder="Password"  required/>
+            <div><a className="link link-hover text-sm">Forgot password?</a></div>
            
            {error && <p className='text-red-600 text-xs'>{error}</p>}
 
 
-            <button type='submit' className="btn btn-neutral mt-4">Login</button>
-            <p className='font-semibold text-center pt-5 '>Don't Have An Account ? <Link className='text-secondary underline' to='/auth/register'>Register</Link> </p>
+            <button type='submit' className="btn btn-neutral mt-4 w-full">Login</button>
+            <p className='font-semibold text-center pt-5 text-sm md:text-base'>Don't Have An Account ? <Link className='text-secondary underline' to='/auth/register'>Register</Link> </p>
           </fieldset>
         </form>
       </div>
