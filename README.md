@@ -1,16 +1,118 @@
-# React + Vite
+# 🐉 Dragon News
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive news portal web application built with React, featuring category-based news browsing, Firebase authentication, and a fully responsive design for mobile, tablet, and desktop.
 
-Currently, two official plugins are available:
+**Live Site:** [https://dragon-news-breaking-de231.web.app](https://dragon-news-breaking-de231.web.app/category/1)
+**Repository:** [https://github.com/Zannat02/Dragon-news-firebase](https://github.com/Zannat02/Dragon-news-firebase)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 📖 About
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Dragon News is a digital news platform delivering timely and organized news across multiple categories — Business, Technology, Health, Sports, Entertainment, Science, Politics, and more. The project features secure user authentication, a clean category-based browsing experience, and a fully responsive layout that adapts smoothly across mobile, tablet, and desktop screens.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ✨ Features
+
+- 📰 **Category-based News Browsing** — Browse news by category (All News, Breaking News, Business, Technology, Health, Sports, Entertainment, Science, Politics, Education, Lifestyle)
+- 🔐 **Authentication** — Email/password registration & login, plus Google sign-in via Firebase
+- 🔒 **Protected Routes** — News details page requires login to access
+- 📱 **Fully Responsive** — Optimized layouts for mobile, tablet, and desktop with collapsible side panels
+- 📢 **Live News Ticker** — Scrolling marquee for latest headlines
+- 🎨 **Modern UI** — Built with Tailwind CSS and DaisyUI components
+- 🔔 **Toast Notifications** — User-friendly feedback using react-hot-toast
+- 👤 **User Profile** — Displays logged-in user's photo and email in the navbar
+- 📄 **Static Pages** — About and Career pages with responsive layouts
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (v18 or higher recommended)
+- npm
+- A Firebase project with Authentication enabled (Email/Password and Google providers)
+
+### Installation
+
+1. **Clone the repository**
+```bash
+   git clone https://github.com/Zannat02/Dragon-news-firebase.git
+   cd Dragon-news-firebase
+```
+
+2. **Install dependencies**
+```bash
+   npm install
+```
+
+3. **Set up Firebase configuration**
+
+   Create a Firebase project at [Firebase Console](https://console.firebase.google.com/), enable **Authentication** (Email/Password and Google sign-in methods), and add your Firebase config to `src/firebase/firebase_config.js`:
+
+```js
+   import { initializeApp } from "firebase/app";
+
+   const firebaseConfig = {
+     apiKey: "YOUR_API_KEY",
+     authDomain: "YOUR_AUTH_DOMAIN",
+     projectId: "YOUR_PROJECT_ID",
+     storageBucket: "YOUR_STORAGE_BUCKET",
+     messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+     appId: "YOUR_APP_ID"
+   };
+
+   const app = initializeApp(firebaseConfig);
+   export default app;
+```
+
+4. **Run the development server**
+```bash
+   npm run dev
+```
+
+   The app will be available at `http://localhost:5173`
+
+---
+
+## 📦 Build & Deployment
+
+### Build for production
+```bash
+npm run build
+```
+
+### Deploy to Firebase Hosting
+```bash
+firebase login
+firebase deploy
+```
+
+> If Firebase Hosting hasn't been initialized yet, run `firebase init` first, select **Hosting**, choose your Firebase project, set `dist` as the public directory, and configure it as a single-page app.
+
+---
+
+## 🔐 Authentication Flow
+
+- Users can register with **name, photo URL, email, and password**
+- Users can log in with **email/password** or **Google**
+- Attempting to view a news article's details without logging in redirects to the login page, and after successful login, the user is redirected back to the article they intended to view
+- Logged-in users see their profile picture and can log out from the navbar
+
+---
+
+## 📱 Responsive Design
+
+The application adapts across three breakpoints:
+
+- **Mobile** — Side panels (categories & social/widgets) are hidden behind toggle icons that open as slide-in drawers
+- **Tablet** — Similar to mobile with adjusted spacing and font sizes
+- **Desktop (lg and above)** — Full three-column layout with category sidebar, main content, and social/widget sidebar always visible
+
+---
+
+## 📄 License
+
+This project is for educational purposes.
